@@ -1,0 +1,93 @@
+TYPE "digital_inputs"
+VERSION : 0.1
+   STRUCT
+       OtwAKPiA : Bool;    // Otawrcie szafy AKPiA
+    "Czujn_Zal>0.2m" : Bool;    // Zalanie komory > 0.2m
+    "Czujn_Zal>1m" : Bool;    // Zalanie komory > 1m
+    Zasilanie : Bool;    // Kontrola zasilania
+    ObcKom : Bool;    // Obecnoœæ w komorze
+    ZasilDRC : Bool;    // Zasilanie zasilacza DRC-180B
+    ZasilPompOdw : Bool;    // Zasilanie pompy odwadniaj¹cej
+    ZasilPlywZalania : Bool;    // Zasilanie p³ywaków kontroli zalania
+    ZasilCzujnRuchu : Bool;    // Zasilanie czujnika ruchu
+    ZasilKontaktDrzwi : Bool;    // Zasilanie kontaktrona otwarcia drzwi
+END_STRUCT;
+
+END_TYPE
+TYPE "digital_outputs"
+VERSION : 0.1
+   STRUCT
+       "void" : Bool ;
+   END_STRUCT;
+END_TYPE
+   TYPE "analog_outputs"
+VERSION : 0.1
+   STRUCT
+       "void" : Bool ;
+   END_STRUCT;
+END_TYPE
+   TYPE "analog_inputs"
+VERSION : 0.1
+   STRUCT
+       "TT01_TempZasil_K-34/5" : Int;    // Temperatura zasilania z K-34/5
+    "TT02_TempPowr_K-34/5" : Int;    // Temperatura powrotu w kierunku K-34/5
+    "TT03_TemZasil_" : Int;    // Temperatura w kierunku
+    "TT04_TempPowr_K-34/14" : Int;    // Temperatura powrotu z K-34/14
+    TT05_TempZasil_SC_E_Plater : Int;    // Temperatura zasilania w kierunku S.C. E. Plater
+    TT06_TempPowr_SC_E_Plater : Int;    // Temperatura powrotu z S.C. E. Plater
+    "PT01_CisnZasil_ K-34/5" : Int;    // CIœnienie zasilania z K-34/5
+    "PT02_CisnPowr_ K-34/5" : Int;    // CIœnienie  powrotu w kierunku K-34/5
+    "PT03_CisnZasil_K-34/14" : Int;    // Ciœnienie zasilania w kierunku K-34/14
+    "PT04_CisnPowr_K-34/14" : Int;    // Ciœnienie powrotu z K-34/14
+    PT05_CisnZasil_SC_E_Plater : Int;    // Ciœnienie zasilania w kierunku S.C E. Plater
+    PT06_CisnPowr_SC_E_Plater : Int;    // Ciœnienie powrotu z S.C E. Plater
+    TTs_TempSzafy : Int;    // Temperatura szafy
+    TTk_TempKom : Int;    // Temperatura w komorze
+    TTz_TempZewn : Int;    // Temperatura zewnêtrzna
+    rezerwa1 : Int;    // rezerwa1
+END_STRUCT;
+
+END_TYPE
+
+	DATA_BLOCK "DB_Input"
+	VERSION : 0.1
+	NON_RETAIN
+	   VAR 
+	      inputs { S7_SetPoint := 'False'} : "digital_inputs";
+	      inputs_AI : "analog_inputs";
+	   END_VAR
+
+
+	BEGIN
+
+	END_DATA_BLOCK
+	DATA_BLOCK "DB_Output"
+	VERSION : 0.1
+	NON_RETAIN
+	   VAR 
+	      output { S7_SetPoint := 'False'} : "digital_outputs";
+	      output_AO : "analog_outputs";
+	   END_VAR
+
+
+	BEGIN
+
+	END_DATA_BLOCK
+
+	FUNCTION "FC_Output" : Void
+	VERSION : 0.1
+
+	BEGIN
+		"OUT" := "DB_Output".output ;
+		"OUT_AO" := "DB_Output".output_AO ;
+	END_FUNCTION
+
+	FUNCTION "FC_Input" : Void
+	VERSION : 0.1
+
+	BEGIN
+		"DB_Input".inputs := "IN";
+		"DB_Input".inputs_AI := "IN_AI";
+		
+	END_FUNCTION
+	   

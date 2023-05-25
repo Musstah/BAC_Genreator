@@ -1,0 +1,89 @@
+TYPE "digital_inputs"
+VERSION : 0.1
+   STRUCT
+       OtwAKPiA : Bool;    // Otawrcie szafy AKPiA
+    ObcKom : Bool;    // Obecnoœæ w komorze
+    ZasilCzujnRuchu : Bool;    // Zasilanie czujnika ruchu
+    ZasilKontaktDrzwi : Bool;    // Zasilanie kontaktrona otwarcia drzwi
+    rezerwa1 : Bool;    // rezerwa1
+    rezerwa2 : Bool;    // rezerwa2
+    rezerwa3 : Bool;    // rezerwa3
+    rezerwa4 : Bool;    // rezerwa4
+    ZasilCzujnRuchu_1 : Bool;    // Zasilanie czujnika ruchu
+    ZasilKontaktDrzwi_1 : Bool;    // Zasilanie kontaktrona otwarcia drzwi
+END_STRUCT;
+
+END_TYPE
+TYPE "digital_outputs"
+VERSION : 0.1
+   STRUCT
+       "void" : Bool ;
+   END_STRUCT;
+END_TYPE
+   TYPE "analog_outputs"
+VERSION : 0.1
+   STRUCT
+       "void" : Bool ;
+   END_STRUCT;
+END_TYPE
+   TYPE "analog_inputs"
+VERSION : 0.1
+   STRUCT
+       TT01_TempZasil_EC : Int;    // Temperatura zasilania z EC
+    TT02_TempPowr_EC : Int;    // Temperatura powrotu w kierunku EC
+    TT04_TempPowr_PLD3 : Int;    // Temperatura powrotu z PLD3
+    TT06_TempPowr_PLN3 : Int;    // Temperatura powrotu z PLN3
+    PT01_CisnZasil_EC : Int;    // CIœnienie zasilania z EC
+    PT02_CisnPowr_EC : Int;    // CIœnienie  powrotu w kierunku EC
+    PT03_CisnZasil_PLD3 : Int;    // Ciœnienie zasilania w kierunku PLD3
+    PT04_CisnPowr_PLD3 : Int;    // Ciœnienie powrotu z PLD3
+    PT05_CisnZasil_PLN3 : Int;    // Ciœnienie zasilania w kierunku PLN3
+    PT06_CisnPowr_PLN3 : Int;    // Ciœnienie powrotu z PLN3
+    TTs_TempSzafy : Int;    // Temperatura szafy
+    TTk_TempKom : Int;    // Temperatura w komorze
+END_STRUCT;
+
+END_TYPE
+
+	DATA_BLOCK "DB_Input"
+	VERSION : 0.1
+	NON_RETAIN
+	   VAR 
+	      inputs { S7_SetPoint := 'False'} : "digital_inputs";
+	      inputs_AI : "analog_inputs";
+	   END_VAR
+
+
+	BEGIN
+
+	END_DATA_BLOCK
+	DATA_BLOCK "DB_Output"
+	VERSION : 0.1
+	NON_RETAIN
+	   VAR 
+	      output { S7_SetPoint := 'False'} : "digital_outputs";
+	      output_AO : "analog_outputs";
+	   END_VAR
+
+
+	BEGIN
+
+	END_DATA_BLOCK
+
+	FUNCTION "FC_Output" : Void
+	VERSION : 0.1
+
+	BEGIN
+		"OUT" := "DB_Output".output ;
+		"OUT_AO" := "DB_Output".output_AO ;
+	END_FUNCTION
+
+	FUNCTION "FC_Input" : Void
+	VERSION : 0.1
+
+	BEGIN
+		"DB_Input".inputs := "IN";
+		"DB_Input".inputs_AI := "IN_AI";
+		
+	END_FUNCTION
+	   

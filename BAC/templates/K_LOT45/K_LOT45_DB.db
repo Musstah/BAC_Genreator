@@ -1,0 +1,111 @@
+
+DATA_BLOCK "DB_Cmds"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+   PC_SPC : PC_SPC_cmd ;
+Unit_Measurements : Struct
+Unit : Unit_Measurement_cmd ;
+EM_InputConditioning : Struct
+"TT01_TempZasil_K-22/4" : "CM_MeasurementPoint_cmd";
+"TT02_TempPowr_K-22/4" : "CM_MeasurementPoint_cmd";
+TT04_TempPowr_Os_Rzepichy : "CM_MeasurementPoint_cmd";
+TT06_TempPowr_Zabianka : "CM_MeasurementPoint_cmd";
+"PT01_CisnZasil_ K-22/4" : "CM_MeasurementPoint_cmd";
+"PT02_CisnPowr_ K-22/4" : "CM_MeasurementPoint_cmd";
+PT03_CisnZasil_Os_Rzepichy : "CM_MeasurementPoint_cmd";
+PT04_CisnPowr_Os_Rzepichy : "CM_MeasurementPoint_cmd";
+PT05_CisnZasil_Zabianka : "CM_MeasurementPoint_cmd";
+PT06_CisnPowr_Zabianka : "CM_MeasurementPoint_cmd";
+TTs_TempSzafy : "CM_MeasurementPoint_cmd";
+TTk_TempKom : "CM_MeasurementPoint_cmd";
+TTz_TempZewn : "CM_MeasurementPoint_cmd";
+FT01_Przeplyw : "CM_MeasurementPoint_cmd";
+Rezerwa1 : "CM_MeasurementPoint_cmd";
+Rezerwa2 : "CM_MeasurementPoint_cmd";
+END_STRUCT;
+END_STRUCT;
+Unit_PowerManagement : Struct
+Unit : Unit_PowerManagement_cmd ;
+END_STRUCT;
+
+END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+
+DATA_BLOCK "DB_Settings"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+   PC_SPC : PC_SPC_settings ;
+Unit_Measurements : Struct
+Unit : Unit_Measurement_settings ;
+EM_InputConditioning : Struct
+"TT01_TempZasil_K-22/4" : "CM_MeasurementPoint_settings";
+"TT02_TempPowr_K-22/4" : "CM_MeasurementPoint_settings";
+TT04_TempPowr_Os_Rzepichy : "CM_MeasurementPoint_settings";
+TT06_TempPowr_Zabianka : "CM_MeasurementPoint_settings";
+"PT01_CisnZasil_ K-22/4" : "CM_MeasurementPoint_settings";
+"PT02_CisnPowr_ K-22/4" : "CM_MeasurementPoint_settings";
+PT03_CisnZasil_Os_Rzepichy : "CM_MeasurementPoint_settings";
+PT04_CisnPowr_Os_Rzepichy : "CM_MeasurementPoint_settings";
+PT05_CisnZasil_Zabianka : "CM_MeasurementPoint_settings";
+PT06_CisnPowr_Zabianka : "CM_MeasurementPoint_settings";
+TTs_TempSzafy : "CM_MeasurementPoint_settings";
+TTk_TempKom : "CM_MeasurementPoint_settings";
+TTz_TempZewn : "CM_MeasurementPoint_settings";
+FT01_Przeplyw : "CM_MeasurementPoint_settings";
+Rezerwa1 : "CM_MeasurementPoint_settings";
+Rezerwa2 : "CM_MeasurementPoint_settings";
+END_STRUCT;
+END_STRUCT;
+Unit_PowerManagement : Struct
+Unit : Unit_PowerManagement_settings ;
+END_STRUCT;
+
+END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+
+DATA_BLOCK "DB_Status"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+   PC_SPC : PC_SPC_status ;
+Unit_Measurements : Struct
+Unit : Unit_Measurement_status ;
+EM_InputConditioning : Struct
+"TT01_TempZasil_K-22/4" : "CM_MeasurementPoint_status";
+"TT02_TempPowr_K-22/4" : "CM_MeasurementPoint_status";
+TT04_TempPowr_Os_Rzepichy : "CM_MeasurementPoint_status";
+TT06_TempPowr_Zabianka : "CM_MeasurementPoint_status";
+"PT01_CisnZasil_ K-22/4" : "CM_MeasurementPoint_status";
+"PT02_CisnPowr_ K-22/4" : "CM_MeasurementPoint_status";
+PT03_CisnZasil_Os_Rzepichy : "CM_MeasurementPoint_status";
+PT04_CisnPowr_Os_Rzepichy : "CM_MeasurementPoint_status";
+PT05_CisnZasil_Zabianka : "CM_MeasurementPoint_status";
+PT06_CisnPowr_Zabianka : "CM_MeasurementPoint_status";
+TTs_TempSzafy : "CM_MeasurementPoint_status";
+TTk_TempKom : "CM_MeasurementPoint_status";
+TTz_TempZewn : "CM_MeasurementPoint_status";
+FT01_Przeplyw : "CM_MeasurementPoint_status";
+Rezerwa1 : "CM_MeasurementPoint_status";
+Rezerwa2 : "CM_MeasurementPoint_status";
+END_STRUCT;
+END_STRUCT;
+Unit_PowerManagement : Struct
+Unit : Unit_PowerManagement_status ;
+END_STRUCT;
+
+END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
